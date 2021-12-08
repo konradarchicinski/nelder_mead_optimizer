@@ -90,6 +90,8 @@ pub fn nelder_mead_algorithm(
 
         // break after no_improv_break iterations with no improvement
         println!("Iter {}, best so far: {}", iters, best);
+        println!("Points:");
+        _print_points(&res);
 
         if best < prev_best - no_improve_thr {
             no_improv = 0;
@@ -155,5 +157,11 @@ pub fn nelder_mead_algorithm(
         }
             
         res = nres
+    }
+}
+
+fn _print_points(rvec: &Vec<(DVector<f64>, f64)>) {
+    for v in rvec.iter(){
+        println!("{},{}", v.0[0], v.0[1]);
     }
 }
